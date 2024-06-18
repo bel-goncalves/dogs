@@ -5,7 +5,7 @@ import Dog from "../Assets/dogs.svg?react";
 
 const Header = () => {
   return (
-    <Header className={styles.header}>
+    <header className={styles.header}>
       <nav className={`${styles.nav} container`}>
         <Link className={styles.logo} to="/" aria-label="Dogs - Home">
           <Dog />
@@ -14,7 +14,7 @@ const Header = () => {
           Login / Criar
         </Link>
       </nav>
-    </Header>
+    </header>
   );
 };
 
