@@ -2,30 +2,33 @@ import React from "react";
 import { Link, json } from "react-router-dom";
 import Input from "../Forms/Input";
 import Button from "../Forms/Button";
+import useForm from "../../Hooks/useForm";
 
 const LoginForm = () => {
-  const [username, setUsername] = React.useState("");
-  const [password, setPassword] = React.useState("");
+  const username = useForm(); //recebe tudo que useForm retorna
+  const password = useForm();
 
   //function login
   function handleSubmit(event) {
     event.preventDefault();
 
-    fetch("https://dogsapi.origamid.dev/json/jwj-auth/v1/token", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ username, password }),
-    })
-      .then((response) => {
-        console.log(response);
-        return response.json();
+    if (username.validate() && password.validate()) {
+      fetch("https://dogsapi.origamid.dev/json/jwj-auth/v1/token", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(),
       })
-      .then((json) => {
-        console.log(json);
-        return json;
-      });
+        .then((response) => {
+          console.log(response);
+          return response.json();
+        })
+        .then((json) => {
+          console.log(json);
+          return json;
+        });
+    }
   }
 
   return (
@@ -33,8 +36,8 @@ const LoginForm = () => {
       LoginForm
       <h1>Login</h1>
       <form action="" onSubmit={handleSubmit}>
-        <Input label="Usuário" type="text" name="username" />
-        <Input label="Senha" type="password" name="password" />
+        <Input label="Usuário" type="text" name="username" {...username} />
+        <Input label="Senha" type="password" name="password" {...password} />
         <Button disabled>Entrar</Button>
       </form>
       <Link to="/login/criar">Cadastro</Link>
