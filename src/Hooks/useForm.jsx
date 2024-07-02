@@ -1,4 +1,4 @@
-import { func } from "prop-types";
+import { func, number } from "prop-types";
 import React from "react";
 
 const types = {
@@ -11,6 +11,10 @@ const types = {
     regex: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
     message:
       "Senha inválida, a senha deve ter no mínimo 8 caracteres, pelo menos 1 caracter maiúsculo, 1 minúsculo e 1 dígito",
+  },
+  number: {
+    regex: /^\d+$/,
+    message: "Utilize apenas números",
   },
 };
 
