@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 
 const Feed = ({ user }) => {
   const [modalPhoto, setModalPhoto] = React.useState(null);
-
   const [pages, setPages] = React.useState([1]);
   const [infinite, setInfinite] = React.useState(true);
 
@@ -25,11 +24,11 @@ const Feed = ({ user }) => {
         }
       }
     }
-    window.addEventListener("whel", infiniteScroll);
+    window.addEventListener("wheel", infiniteScroll);
     window.addEventListener("scroll", infiniteScroll);
 
     return () => {
-      window.removeEventListener("whel", infiniteScroll);
+      window.removeEventListener("wheel", infiniteScroll);
       window.removeEventListener("scroll", infiniteScroll);
     };
   }, [infinite]);
